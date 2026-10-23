@@ -1,0 +1,69 @@
+import { motion } from "framer-motion";
+import { Button, Typography } from "@mui/material";
+import { EVENT, IMAGES } from "../data/invitation";
+
+interface Props {
+  onContinue: () => void;
+}
+
+export default function InvitationScene({ onContinue }: Props) {
+  return (
+    <motion.section
+      className="scene invitation"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.article
+        className="parchment"
+        initial={{ scaleY: 0.1, opacity: 0, filter: "brightness(2)" }}
+        animate={{ scaleY: 1, opacity: 1, filter: "brightness(1)" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        style={{ originY: 0 }}
+      >
+        <div className="ribbon" aria-hidden />
+        <div className="invite-grid">
+          <div className="couple-frame">
+            <svg width="0" height="0" aria-hidden>
+              <filter id="toon">
+                <feComponentTransfer>
+                  <feFuncR type="discrete" tableValues="0 .2 .4 .6 .8 1" />
+                  <feFuncG type="discrete" tableValues="0 .2 .4 .6 .8 1" />
+                  <feFuncB type="discrete" tableValues="0 .2 .4 .6 .8 1" />
+                </feComponentTransfer>
+              </filter>
+            </svg>
+            <img className="couple" src={IMAGES.couple} alt="Ayah and Khaled" />
+          </div>
+          <div className="invite-text">
+            <Typography variant="h1" sx={{ fontSize: { xs: "2.4rem", md: "3.2rem" } }}>
+              {EVENT.title}
+            </Typography>
+            <Typography sx={{ mt: 2, fontStyle: "italic" }}>{EVENT.intro}</Typography>
+            <Typography>{EVENT.body}</Typography>
+            <Typography sx={{ mt: 1 }}>{EVENT.closing}</Typography>
+            <p className="names">{EVENT.names}</p>
+            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>{EVENT.date}</Typography>
+            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>{EVENT.venue}</Typography>
+            <Typography>{EVENT.address}</Typography>
+          </div>
+        </div>
+      </motion.article>
+
+      <motion.div
+        className="prompt"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4 }}
+      >
+        <Typography sx={{ color: "#f3e7cf", fontStyle: "italic" }}>
+          One important question remains…
+        </Typography>
+        <Button variant="contained" sx={{ mt: 1 }} onClick={onContinue}>
+          Continue
+        </Button>
+      </motion.div>
+    </motion.section>
+  );
+}

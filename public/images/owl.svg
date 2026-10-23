@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="title desc">
+  <title id="title">Snowy owl carrying an engagement envelope</title>
+  <desc id="desc">A warm ivory and brown speckled owl with outstretched wings carries a champagne envelope sealed with a burgundy heart and the initials A and K.</desc>
+  <defs>
+    <linearGradient id="feathers" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8e9"/><stop offset=".55" stop-color="#ead8b9"/><stop offset="1" stop-color="#c9ad86"/></linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#d5bd99"/></linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff4d8"/><stop offset="1" stop-color="#e6c995"/></linearGradient>
+    <linearGradient id="wax" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9f1835"/><stop offset="1" stop-color="#5d0920"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#30121a" flood-opacity=".22"/></filter>
+  </defs>
+  <!-- wings -->
+  <g stroke="#b99a72" stroke-width="2.4" stroke-linejoin="round" filter="url(#shadow)">
+    <path fill="url(#wing)" d="M355 236 C292 193 221 128 135 68 C150 113 183 151 220 181 C157 151 94 119 40 99 C69 143 120 177 174 204 C116 191 69 180 20 176 C71 226 132 248 202 254 C153 264 112 277 76 300 C151 319 224 302 286 277 Z"/>
+    <path fill="url(#wing)" d="M445 236 C508 193 579 128 665 68 C650 113 617 151 580 181 C643 151 706 119 760 99 C731 143 680 177 626 204 C684 191 731 180 780 176 C729 226 668 248 598 254 C647 264 688 277 724 300 C649 319 576 302 514 277 Z"/>
+    <!-- feather lines -->
+    <g fill="none" stroke="#b99a72" stroke-width="2" opacity=".85">
+      <path d="M74 111 Q155 164 267 233 M54 179 Q146 212 264 252 M123 274 Q195 275 282 265 M726 111 Q645 164 533 233 M746 179 Q654 212 536 252 M677 274 Q605 275 518 265"/>
+      <path d="M139 91 Q186 157 277 218 M195 131 Q222 178 291 221 M661 91 Q614 157 523 218 M605 131 Q578 178 509 221"/>
+    </g>
+  </g>
+  <!-- body -->
+  <path d="M318 227 Q400 181 482 227 L503 351 Q484 415 400 425 Q316 415 297 351 Z" fill="url(#feathers)" stroke="#b99a72" stroke-width="3"/>
+  <path d="M326 290 Q400 268 474 290 L463 362 Q435 396 400 399 Q365 396 337 362 Z" fill="#fff8eb" opacity=".92"/>
+  <!-- head -->
+  <path d="M311 245 Q294 197 320 159 Q344 122 400 124 Q456 122 480 159 Q506 197 489 245 Q466 278 400 281 Q334 278 311 245 Z" fill="url(#feathers)" stroke="#b99a72" stroke-width="3"/>
+  <!-- speckles -->
+  <g fill="#987753" opacity=".82">
+    <ellipse cx="340" cy="161" rx="5" ry="8"/><ellipse cx="359" cy="145" rx="4" ry="6"/><ellipse cx="381" cy="139" rx="4" ry="6"/><ellipse cx="420" cy="139" rx="4" ry="6"/><ellipse cx="442" cy="147" rx="4" ry="6"/><ellipse cx="461" cy="165" rx="5" ry="8"/>
+    <ellipse cx="326" cy="190" rx="4" ry="6"/><ellipse cx="337" cy="215" rx="4" ry="5"/><ellipse cx="464" cy="211" rx="4" ry="5"/><ellipse cx="475" cy="190" rx="4" ry="6"/>
+    <circle cx="350" cy="315" r="4"/><circle cx="372" cy="336" r="3"/><circle cx="428" cy="326" r="4"/><circle cx="450" cy="307" r="3"/><circle cx="390" cy="365" r="3"/><circle cx="414" cy="377" r="3"/>
+  </g>
+  <!-- facial disks -->
+  <ellipse cx="369" cy="205" rx="38" ry="43" fill="#fffaf0" stroke="#c6ad8c" stroke-width="2"/>
+  <ellipse cx="431" cy="205" rx="38" ry="43" fill="#fffaf0" stroke="#c6ad8c" stroke-width="2"/>
+  <ellipse cx="369" cy="204" rx="18" ry="22" fill="#d7b67b"/>
+  <ellipse cx="431" cy="204" rx="18" ry="22" fill="#d7b67b"/>
+  <ellipse cx="370" cy="204" rx="10" ry="14" fill="#211b19"/>
+  <ellipse cx="430" cy="204" rx="10" ry="14" fill="#211b19"/>
+  <circle cx="374" cy="198" r="4" fill="#fffdf5"/><circle cx="434" cy="198" r="4" fill="#fffdf5"/>
+  <path d="M390 229 L400 245 L410 229 Q400 220 390 229Z" fill="#6d342b" stroke="#52251f" stroke-width="1.5"/>
+  <!-- feet -->
+  <g fill="#c48a3c" stroke="#80542a" stroke-width="2"><path d="M359 405 Q350 426 365 430 L385 423 L389 409Z"/><path d="M411 409 L415 423 L435 430 Q450 426 441 405Z"/></g>
+  <!-- envelope -->
+  <g filter="url(#shadow)" stroke-linejoin="round">
+    <path d="M269 281 L531 281 L550 405 L250 405 Z" fill="url(#paper)" stroke="#a9824c" stroke-width="3"/>
+    <path d="M250 405 L345 333 L400 374 L455 333 L550 405" fill="#f6e2b9" stroke="#b28d58" stroke-width="2.5"/>
+    <path d="M269 281 L400 371 L531 281" fill="#fff1d1" stroke="#b28d58" stroke-width="2.5"/>
+    <path d="M250 405 L345 333 M550 405 L455 333" fill="none" stroke="#d0ad78" stroke-width="2"/>
+    <!-- wax seal -->
+    <path d="M400 326 C389 312 368 319 366 337 C363 356 384 371 400 381 C416 371 437 356 434 337 C432 319 411 312 400 326Z" fill="url(#wax)" stroke="#6f1028" stroke-width="3"/>
+    <path d="M400 331 C391 321 375 326 375 340 C375 353 390 365 400 371 C410 365 425 353 425 340 C425 326 409 321 400 331Z" fill="none" stroke="#dca65e" stroke-width="1.5"/>
+    <text x="400" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#ffe7ae">A♥K</text>
+  </g>
+</svg>

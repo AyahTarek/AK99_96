@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/theme.ts","./src/components/attendancescene.tsx","./src/components/invitationscene.tsx","./src/components/openingscene.tsx","./src/data/invitation.ts","./vite.config.ts"],"version":"5.9.3"}
