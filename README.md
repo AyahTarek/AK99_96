@@ -1,6 +1,6 @@
 # Ayah & Khaled — Engagement Invitation
 
-React + TypeScript + Vite + MUI + Framer Motion.
+React + TypeScript + Vite + MUI + Framer Motion
 
 ## Run locally
 
