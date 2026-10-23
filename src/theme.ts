@@ -14,19 +14,32 @@ export const theme = createTheme({
     h1: { fontFamily: serif, fontWeight: 600 },
     h2: { fontFamily: serif, fontWeight: 600 },
     body1: { fontSize: "1.25rem" },
-    button: { textTransform: "none", fontFamily: serif, fontSize: "1.2rem", fontWeight: 600 },
+    button: {
+      textTransform: "none",
+      fontFamily: serif,
+      fontSize: "1.2rem",
+      fontWeight: 600,
+    },
   },
   components: {
     MuiButton: {
       defaultProps: { disableElevation: true },
       styleOverrides: {
-        root: { borderRadius: 999, padding: "10px 28px", border: "1px solid #b8924a" },
+        root: {
+          borderRadius: 999,
+          padding: "10px 28px",
+          border: "1px solid #b8924a",
+        },
         contained: {
           background: "linear-gradient(#7d1a2c,#5a0f1d)",
           color: "#f6ecd6",
           "&:hover": { background: "linear-gradient(#8d2236,#6a1423)" },
         },
-        outlined: { color: "#6e1423", background: "#f6ecd6", "&:hover": { background: "#efe0bf" } },
+        outlined: {
+          color: "#6e1423",
+          background: "#f6ecd6",
+          "&:hover": { background: "#efe0bf" },
+        },
       },
     },
   },

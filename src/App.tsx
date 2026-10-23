@@ -6,30 +6,23 @@ import AttendanceScene from "./components/AttendanceScene";
 
 type Scene = "opening" | "invitation" | "attendance";
 
-const RSVP_KEY = "rsvpOpened";
-
 export default function App() {
-  const [scene, setScene] = useState<Scene>(() =>
-    localStorage.getItem(RSVP_KEY) ? "invitation" : "opening",
-  );
+  const [scene, setScene] = useState<Scene>("opening");
 
   return (
     <MotionConfig reducedMotion="user">
       <main className="stage">
         <AnimatePresence mode="wait">
-          {scene === "opening" && <OpeningScene key="o" onOpened={() => setScene("invitation")} />}
-          {scene === "invitation" && (
-            <InvitationScene key="i" onContinue={() => setScene("attendance")} />
+          {scene === "opening" && (
+            <OpeningScene key="o" onOpened={() => setScene("invitation")} />
           )}
-          {scene === "attendance" && (
-            <AttendanceScene
-              key="a"
-              onRsvp={() => {
-                localStorage.setItem(RSVP_KEY, "1");
-                setScene("invitation");
-              }}
+          {scene === "invitation" && (
+            <InvitationScene
+              key="i"
+              onContinue={() => setScene("attendance")}
             />
           )}
+          {scene === "attendance" && <AttendanceScene key="a" />}
         </AnimatePresence>
       </main>
     </MotionConfig>

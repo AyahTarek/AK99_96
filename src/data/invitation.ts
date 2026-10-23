@@ -1,7 +1,3 @@
-// Public Google Forms responder link (viewform), not the /edit link.
-export const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSf7jJGFC_zOA7xvBFcYLqr3bn9DsnCNehgaaPiMsrZXAj9WcQ/viewform?usp=header";
-
 export const EVENT = {
   title: "Our Engagement",
   intro: "Together with their families,",

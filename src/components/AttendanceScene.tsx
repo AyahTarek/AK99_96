@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button, Typography } from "@mui/material";
-import { GOOGLE_FORM_URL, MAX_ESCAPES } from "../data/invitation";
+import { MAX_ESCAPES } from "../data/invitation";
 
 type Answer = "pending" | "yes" | "no";
 
@@ -13,10 +13,7 @@ const TEASES = [
   "Too slow!",
 ];
 
-const openForm = () =>
-  window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
-
-export default function AttendanceScene({ onRsvp }: { onRsvp: () => void }) {
+export default function AttendanceScene() {
   const [answer, setAnswer] = useState<Answer>("pending");
   const [escapes, setEscapes] = useState(0);
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -76,21 +73,6 @@ export default function AttendanceScene({ onRsvp }: { onRsvp: () => void }) {
               ? "Thank you for being a part of our happiness. We can't wait to celebrate this special night with you!"
               : "We really hoped you could make it, You'll be so missed! ❤️"}
           </Typography>
-          <Typography sx={{ mt: 2, fontStyle: "italic", fontSize: "1.1rem" }}>
-            {yes
-              ? "Please RSVP so we can make sure everything is set for you."
-              : "Even if you cannot make it, please fill in the RSVP form so we can prepare everything for each and every guest."}
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{ mt: 3 }}
-            onClick={() => {
-              openForm();
-              onRsvp();
-            }}
-          >
-            Continue to RSVP
-          </Button>
         </div>
       </motion.section>
     );

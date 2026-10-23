@@ -176,14 +176,12 @@ body {
   margin: 0 auto;
   width: 100%;
 }
-/* Remove `filter` for the original look. */
 .couple {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  filter: saturate(1.3) contrast(1.1) url(#toon);
 }
 .names {
   font-family: "Pinyon Script", cursive;

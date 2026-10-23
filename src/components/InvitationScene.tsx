@@ -25,27 +25,27 @@ export default function InvitationScene({ onContinue }: Props) {
         <div className="ribbon" aria-hidden />
         <div className="invite-grid">
           <div className="couple-frame">
-            <svg width="0" height="0" aria-hidden>
-              <filter id="toon">
-                <feComponentTransfer>
-                  <feFuncR type="discrete" tableValues="0 .2 .4 .6 .8 1" />
-                  <feFuncG type="discrete" tableValues="0 .2 .4 .6 .8 1" />
-                  <feFuncB type="discrete" tableValues="0 .2 .4 .6 .8 1" />
-                </feComponentTransfer>
-              </filter>
-            </svg>
             <img className="couple" src={IMAGES.couple} alt="Ayah and Khaled" />
           </div>
           <div className="invite-text">
-            <Typography variant="h1" sx={{ fontSize: { xs: "2.4rem", md: "3.2rem" } }}>
+            <Typography
+              variant="h1"
+              sx={{ fontSize: { xs: "2.4rem", md: "3.2rem" } }}
+            >
               {EVENT.title}
             </Typography>
-            <Typography sx={{ mt: 2, fontStyle: "italic" }}>{EVENT.intro}</Typography>
+            <Typography sx={{ mt: 2, fontStyle: "italic" }}>
+              {EVENT.intro}
+            </Typography>
             <Typography>{EVENT.body}</Typography>
             <Typography sx={{ mt: 1 }}>{EVENT.closing}</Typography>
             <p className="names">{EVENT.names}</p>
-            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>{EVENT.date}</Typography>
-            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>{EVENT.venue}</Typography>
+            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+              {EVENT.date}
+            </Typography>
+            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+              {EVENT.venue}
+            </Typography>
             <Typography>{EVENT.address}</Typography>
           </div>
         </div>
