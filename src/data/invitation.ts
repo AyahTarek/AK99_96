@@ -1,6 +1,6 @@
 export const EVENT = {
   title: "Our Engagement",
-  intro: "Together with their families,",
+  intro: "Together with our families,",
   body: "We invite you to share in our happiness and celebrate this special night with us.",
   closing: "It would mean so much to have you there.",
   names: "Ayah & Khaled",
