@@ -1,9 +1,19 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Button, Typography } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { MAX_ESCAPES } from "../data/invitation";
+import { NAME_KEY, getSavedStatus, saveStatus, type Status } from "../lib/rsvp";
 
-type Answer = "pending" | "yes" | "no";
+type Answer = "pending" | Status;
 
 const TEASES = [
   "Wait, really? 🥺",
@@ -15,12 +25,46 @@ const TEASES = [
 
 export default function AttendanceScene() {
   const [answer, setAnswer] = useState<Answer>("pending");
+  const [choice, setChoice] = useState<Status | null>(null);
+  const [name, setName] = useState(() => localStorage.getItem(NAME_KEY) ?? "");
+  const [previous, setPrevious] = useState<Status | null>(null);
+  const [error, setError] = useState(false);
+  const [busy, setBusy] = useState(false);
   const [escapes, setEscapes] = useState(0);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const areaRef = useRef<HTMLDivElement>(null);
   const noRef = useRef<HTMLButtonElement>(null);
 
   const gaveUp = escapes >= MAX_ESCAPES;
+
+  const close = () => {
+    setChoice(null);
+    setPrevious(null);
+    setError(false);
+  };
+
+  const save = async (trimmed: string, status: Status) => {
+    const ok = await saveStatus(trimmed, status);
+    if (!ok) return setError(true);
+    localStorage.setItem(NAME_KEY, trimmed);
+    close();
+    setAnswer(status);
+  };
+
+  // A different answer from the one on record needs confirmation first.
+  const submit = async () => {
+    const trimmed = name.trim();
+    if (!choice || !trimmed || busy) return;
+    setBusy(true);
+    setError(false);
+    const found = getSavedStatus();
+    if (!previous && found && found !== choice) {
+      setPrevious(found);
+      return setBusy(false);
+    }
+    await save(trimmed, choice);
+    setBusy(false);
+  };
 
   // Move the button within the arena's lower band, away from its current spot.
   const escape = () => {
@@ -104,7 +148,7 @@ export default function AttendanceScene() {
         <Button
           variant="contained"
           sx={{ mt: 3 }}
-          onClick={() => setAnswer("yes")}
+          onClick={() => setChoice("yes")}
         >
           Yes, of course! ❤️
         </Button>
@@ -126,7 +170,7 @@ export default function AttendanceScene() {
               }}
               onClick={(e) => {
                 // Real clicks only: keyboard (detail 0), or after giving up.
-                if (gaveUp || e.detail === 0) setAnswer("no");
+                if (gaveUp || e.detail === 0) setChoice("no");
               }}
             >
               {label}
@@ -134,6 +178,60 @@ export default function AttendanceScene() {
           </motion.div>
         </div>
       </div>
+      <Dialog open={choice !== null} onClose={close} fullWidth maxWidth="xs">
+        {previous ? (
+          <>
+            <DialogTitle>Changed your mind? ✨</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                You said <b>{previous === "yes" ? "Yes" : "No"}</b> before.
+                Shall we make it a <b>{choice === "yes" ? "Yes" : "No"}</b>?
+              </DialogContentText>
+              {error && (
+                <Typography color="error" sx={{ mt: 1 }}>
+                  Couldn't save. Please try again.
+                </Typography>
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={close}>Sadly, still no</Button>
+              <Button variant="contained" disabled={busy} onClick={submit}>
+                Yes, Let the magic begin!
+              </Button>
+            </DialogActions>
+          </>
+        ) : (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit();
+            }}
+          >
+            <DialogTitle>Your name? ✨</DialogTitle>
+            <DialogContent>
+              <TextField
+                autoFocus
+                fullWidth
+                margin="dense"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                slotProps={{ htmlInput: { maxLength: 60 } }}
+                error={error}
+                helperText={error ? "Couldn't save. Please try again." : " "}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={busy || !name.trim()}
+              >
+                {busy ? "Saving…" : "Done"}
+              </Button>
+            </DialogActions>
+          </form>
+        )}
+      </Dialog>
     </motion.section>
   );
 }

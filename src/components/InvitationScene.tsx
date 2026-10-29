@@ -46,7 +46,11 @@ export default function InvitationScene({ onContinue }: Props) {
             <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
               {EVENT.venue}
             </Typography>
-            <Typography>{EVENT.address}</Typography>
+            <Typography>
+              <a href={EVENT.mapUrl} target="_blank" rel="noopener noreferrer">
+                📍 {EVENT.address}
+              </a>
+            </Typography>
           </div>
         </div>
       </motion.article>

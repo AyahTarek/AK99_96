@@ -6,7 +6,8 @@ export const EVENT = {
   names: "Ayah & Khaled",
   date: "Saturday, 28 November 2026",
   venue: "Panseeh Hall",
-  address: "Dar Al Hayaa Al Handaseya",
+  address: "Dar Al Hay2a Al Handaseya, ", // Replace with the exact "Share" link from Google Maps for the hall.
+  mapUrl: "https://maps.app.goo.gl/TXYbuWB2RR3eDmEf9",
 };
 
 // Replace these files in public/images to use real artwork.
