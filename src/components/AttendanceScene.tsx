@@ -11,7 +11,13 @@ import {
   Typography,
 } from "@mui/material";
 import { MAX_ESCAPES } from "../data/invitation";
-import { NAME_KEY, getSavedStatus, saveStatus, type Status } from "../lib/rsvp";
+import {
+  getSavedName,
+  getSavedStatus,
+  saveStatus,
+  setSavedName,
+  type Status,
+} from "../lib/rsvp";
 
 type Answer = "pending" | Status;
 
@@ -26,7 +32,7 @@ const TEASES = [
 export default function AttendanceScene() {
   const [answer, setAnswer] = useState<Answer>("pending");
   const [choice, setChoice] = useState<Status | null>(null);
-  const [name, setName] = useState(() => localStorage.getItem(NAME_KEY) ?? "");
+  const [name, setName] = useState(getSavedName);
   const [previous, setPrevious] = useState<Status | null>(null);
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -46,7 +52,7 @@ export default function AttendanceScene() {
   const save = async (trimmed: string, status: Status) => {
     const ok = await saveStatus(trimmed, status);
     if (!ok) return setError(true);
-    localStorage.setItem(NAME_KEY, trimmed);
+    setSavedName(trimmed);
     close();
     setAnswer(status);
   };

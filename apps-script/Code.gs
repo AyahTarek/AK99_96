@@ -33,8 +33,8 @@ function doGet(e) {
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
-  lock.waitLock(10000);
   try {
+    lock.waitLock(30000);
     const body = JSON.parse(e.postData.contents);
     const key = keyOf_(body.id);
     const name = String(body.name || "")
@@ -50,6 +50,8 @@ function doPost(e) {
     if (row < 0) sheet.appendRow(values);
     else sheet.getRange(row, 1, 1, 4).setValues([values]);
     return json_({ ok: true });
+  } catch (err) {
+    return json_({ ok: false, error: String(err) });
   } finally {
     lock.releaseLock();
   }
