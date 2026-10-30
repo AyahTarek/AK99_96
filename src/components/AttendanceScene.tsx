@@ -14,6 +14,7 @@ import { MAX_ESCAPES } from "../data/invitation";
 import {
   getSavedName,
   getSavedStatus,
+  lastError,
   saveStatus,
   setSavedName,
   type Status,
@@ -195,7 +196,7 @@ export default function AttendanceScene() {
               </DialogContentText>
               {error && (
                 <Typography color="error" sx={{ mt: 1 }}>
-                  Couldn't save. Please try again.
+                  Couldn't save ({lastError}). Please try again.
                 </Typography>
               )}
             </DialogContent>
@@ -223,7 +224,11 @@ export default function AttendanceScene() {
                 onChange={(e) => setName(e.target.value)}
                 slotProps={{ htmlInput: { maxLength: 60 } }}
                 error={error}
-                helperText={error ? "Couldn't save. Please try again." : " "}
+                helperText={
+                  error
+                    ? `Couldn't save (${lastError}). Please try again.`
+                    : " "
+                }
               />
             </DialogContent>
             <DialogActions>

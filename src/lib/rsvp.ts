@@ -68,6 +68,7 @@ export async function saveStatus(
 ): Promise<boolean> {
   if (!URL_) {
     console.error("VITE_RSVP_URL is not set in this build");
+    lastError = "no url";
     return false;
   }
   // Apps Script occasionally fails transiently (cold start, lock contention).
@@ -77,8 +78,10 @@ export async function saveStatus(
         write(STATUS_KEY, status);
         return true;
       }
+      lastError = "server";
     } catch (err) {
       console.error("RSVP save failed", err);
+      lastError = err instanceof Error ? err.message : "network";
     }
     await new Promise((r) => setTimeout(r, 800 * (attempt + 1)));
   }
