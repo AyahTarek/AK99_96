@@ -57,16 +57,36 @@ export default function InvitationScene({ onContinue }: Props) {
 
       <motion.div
         className="prompt"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.4, type: "spring", damping: 12 }}
       >
-        <Typography sx={{ color: "#f3e7cf", fontStyle: "italic" }}>
+        <Typography
+          sx={{
+            color: "#ffe9a8",
+            fontStyle: "italic",
+            fontSize: { xs: "1.4rem", sm: "1.7rem" },
+            textShadow: "0 0 12px #d9b25f",
+          }}
+        >
           One important question remains…
         </Typography>
-        <Button variant="contained" sx={{ mt: 1 }} onClick={onContinue}>
-          Continue
-        </Button>
+        <motion.div
+          animate={{
+            scale: [1, 1.08, 1],
+            boxShadow: [
+              "0 0 0 0 #d9b25f00",
+              "0 0 28px 8px #d9b25faa",
+              "0 0 0 0 #d9b25f00",
+            ],
+          }}
+          transition={{ duration: 1.6, repeat: Infinity, delay: 2 }}
+          style={{ display: "inline-block", borderRadius: 999, marginTop: 8 }}
+        >
+          <Button variant="contained" onClick={onContinue}>
+            Continue ✨
+          </Button>
+        </motion.div>
       </motion.div>
     </motion.section>
   );

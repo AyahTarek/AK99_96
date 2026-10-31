@@ -7,6 +7,8 @@ export const NAME_KEY = "ayoya:name";
 const ID_KEY = "ayoya:id";
 const STATUS_KEY = "ayoya:status";
 
+// Short reason for the last failed save, shown to the guest for debugging.
+export let lastError = "";
 // localStorage throws in private mode and some in-app browsers; fall back to memory.
 const memory = new Map<string, string>();
 function read(key: string): string | null {
