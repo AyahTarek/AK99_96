@@ -5,6 +5,7 @@ export const EVENT = {
   closing: "It would mean so much to have you there.",
   names: "Ayah & Khaled",
   date: "Saturday, 28 November 2026",
+  time: "6:00 PM",
   venue: "Panseeh Hall",
   address: "Dar Al Hay2a Al Handaseya, ", // Replace with the exact "Share" link from Google Maps for the hall.
   mapUrl: "https://maps.app.goo.gl/TXYbuWB2RR3eDmEf9",

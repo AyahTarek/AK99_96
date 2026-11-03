@@ -44,6 +44,9 @@ export default function InvitationScene({ onContinue }: Props) {
               {EVENT.date}
             </Typography>
             <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
+              {EVENT.time}
+            </Typography>
+            <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
               {EVENT.venue}
             </Typography>
             <Typography>
